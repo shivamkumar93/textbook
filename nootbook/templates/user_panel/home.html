@@ -1,11 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-   <h1>djfvfgidsfbn</h1> 
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class=" px-10 py-2 " >
+    <h2>Recent Added</h2>
+    <div class="grid grid-cols-5 gap-5 mt-4 ">
+    
+    {% for book in books %}
+    <div class="bg-gray-50 p-2 rounded shadow">
+        <img src="{{ book.cover_image.url }}" alt="{{ book.title }}" class="h-72 w-full object-cover">
+        <h2 class="mt-2 font-semibold">Title: {{ book.title }}</h2>
+        <h2 class="text-sm text-gray-600">Author: {{ book.author }}</h2>
+        <h2 class="text-sm font-semibold text-gray-600">Price: ₹{{ book.price }}</h2>
+    </div>
+    {% endfor %}
+        
+</div>
+
+</div>
+ 
+  
+{% endblock content %}
