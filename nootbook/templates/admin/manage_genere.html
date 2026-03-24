@@ -6,6 +6,11 @@
     <div class="w-9/12 w-full">
         <div class="flex flex-1 flex-col">
             <h2 class="text-lg font-medium space-y-3">Manage Generes</h2>
+            <div class="flex items-center gap-3 mt-5 text-md text-gray-600">
+                <p>Total Generes : {{generes.paginator.count}}</p>
+                <p>Showing {{generes.start_index}} to {{generes.end_index}}</p>
+                <p>Page No : {{generes.number}} </p>
+            </div>
             <table class="w-full border bg-gray-50 mt-3">
                 <thead>
                     <tr>
@@ -38,5 +43,21 @@
         </form>
     </div>
 </div>
+<div class="flex mt-5 items-center gap-3 justify-between">
+                
+                {% if generes.has_previous %}
+                    <span class="border px-3 py-1 bg-gray-200"><a href="?page={{ generes.previous_page_number }}">Previous</a></span>
+                {% else %}
+                <span class="border px-3 py-1 bg-gray-200 cursor-not-allowed">Previous</span>
+
+                {% endif %}
+
+                
+                {% if generes.has_next %}
+                  <span class="border px-3 py-1 bg-gray-200"><a href="?page={{ generes.next_page_number }}">Next</a></span>
+                {% else %}
+                                <span class="border px-3 py-1 bg-gray-200 cursor-not-allowed">Next</span>
+
+                {% endif %}
   
 {% endblock content %}

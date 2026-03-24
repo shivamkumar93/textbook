@@ -7,8 +7,13 @@
         <div class="flex flex-1 flex-col">
             <div class="flex flex-1 justify-between">
                 
-                <h2 class="text-lg font-medium ">Manage Books</h2>
+                <h2 class="text-lg font-medium ">Manage Books ({{books|length}})</h2>
                 <a href="{% url 'insertBook' %}" class="text-lg font-medium text-purple-700 hover:underline">Insert Books</a>
+            </div>
+            <div class="flex items-center gap-3 mt-5 text-md text-gray-600">
+                <p>Total Books : {{books.paginator.count}}</p>
+                <p>Showing {{books.start_index}} to {{books.end_index}}</p>
+                <p>Page No : {{books.number}} </p>
             </div>
             <table class="w-full border bg-gray-50 mt-3">
                 <thead>
@@ -45,6 +50,25 @@
                     
                 </tbody>
             </table>
+            <div class="flex mt-5 items-center gap-3 justify-between">
+                
+                {% if books.has_previous %}
+                    <span class="border px-3 py-1 bg-gray-200"><a href="?page={{ books.previous_page_number }}">Previous</a></span>
+                {% else %}
+                <span class="border px-3 py-1 bg-gray-200 cursor-not-allowed">Previous</span>
+
+                {% endif %}
+
+                
+                {% if books.has_next %}
+                  <span class="border px-3 py-1 bg-gray-200"><a href="?page={{ books.next_page_number }}">Next</a></span>
+                {% else %}
+                                <span class="border px-3 py-1 bg-gray-200 cursor-not-allowed">Next</span>
+
+                {% endif %}
+                    
+                    
+            </div>
      
     </div>
    
