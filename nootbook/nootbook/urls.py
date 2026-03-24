@@ -9,6 +9,8 @@ from book.admin_views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", home, name="homepage"),
+    path("filter/", filterbook, name="filter"),
+    path("filter/<slug:slug>/", filterbook, name="category_filter"),
 
 
 # Admin urls Here
