@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class=" px-10 py-2 ">
+    <div class="flex flex-1 border-b px-5 py-2 gap-2">
+        <a href="{% url 'homepage' %}" class="text-lg font-normal text-slate-600">Home</a>
+        <span class="text-lg font-normal text-slate-600">&raquo;</span>
+        <a href="{% url 'category_filter' book.genere.slug %}"
+            class="text-lg font-normal text-slate-600 ">{{book.genere.title}}</a>
+        <span class="text-lg font-normal text-slate-600">&raquo;</span>
+        <span class="text-lg font-normal text-slate-600">{{book.title}}</span>
+    </div>
+
+
+    <div class="bg-gray-50 p-2 mt-3 flex gap-3 rounded shadow w-full">
+        <div class="w-4/12 p-4">
+
+            <img src="{{ book.cover_image.url }}" alt="{{ book.title }}" class="h-[65vh] w-full object-cover">
+        </div>
+        <div class="w-8/12 p-4 space-y-2">
+
+            <h2 class="mt-2 text-lg font-semibold">Title : {{ book.title }}</h2>
+            <h2 class="text-md font-bold text-gray-600">Author : {{ book.author }}</h2>
+            <h2 class="text-lg text-gray-600">Genere : {{ book.genere }}</h2>
+            <h2 class="text-md text-gray-600">Description : {{ book.description }}</h2>
+            <h2 class="text-xl font-semibold text-gray-600">Price: ₹{{ book.dis_price }}
+                <span class=" ml-3 text-sm font-medium"><del>{{book.price}}</del></span>
+            </h2>
+            <h2 class="text-md font-medium">Edition : {{book.edition}}</h2>
+            <h2 class="text-md font-normal">ISBN : {{book.isbn}}</h2>
+            <div class="flex flex-1 gap-5 py-5">
+                <a href=""
+                    class="text-xl font-medium px-6 py-2 text-white bg-purple-700 hover:bg-purple-900 rounded-lg">Buy
+                    now</a>
+                <a href="" class="text-xl font-medium px-6 py-2 text-white bg-blue-700 hover:bg-blue-900 rounded-lg">Add
+                    to cart</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-col mt-5">
+    <h2 class="text-xl font-semibold text-gray-800">Related Books</h2>
+    <div class="grid grid-cols-5 gap-5 mt-4 ">
+    
+    {% for book in related_books %}
+    <a href="{% url 'bookview' book.slug %}">
+    <div class="bg-gray-50 p-2 rounded shadow">
+        <img src="{{ book.cover_image.url }}" alt="{{ book.title }}" class="h-72 w-full object-cover">
+        <h2 class="mt-2 font-semibold">{{ book.title }}</h2>
+        <h2 class="text-sm text-gray-600">Author: {{ book.author }}</h2>
+        <h2 class="text-sm font-semibold text-gray-600">Price: ₹{{ book.price }}</h2>
+    </div>
+    </a>
+    
+    {% endfor %}
+        
+</div>
+</div>
+
+</div>
+
+
+
+
+
+
+{% endblock content %}

@@ -1,5 +1,8 @@
 <div class="flex flex-1 bg-white border-b items-center justify-between px-10 gap-10 py-2 ">
-    <h1 class="text-2xl font-bold text-purple-700">Bookshop</h1>
+    <a href="{% url 'homepage' %}">
+
+        <h1 class="text-2xl font-bold text-purple-700">Bookshop</h1>
+    </a>
     <form action="{% url 'filter' %}" method="get" class="flex-1" >
         <input type="search" name="search" class="border border-slate-200 w-full bg-slate-100 py-2 px-4 rounded-lg" 
         placeholder="Search by Title, Author, ISBN ">
@@ -14,6 +17,7 @@
 </div>
 
 <div class="flex flex-1 px-10 bg-slate-100 devided-x">
+    <a href="{% url 'homepage' %}" class="text-gray-800 border-r-2 border-slate-200 hover:bg-slate-200 py-2 px-2">All</a>
     
     {% for genere in generes %}
         

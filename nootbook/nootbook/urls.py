@@ -11,6 +11,7 @@ urlpatterns = [
     path("", home, name="homepage"),
     path("filter/", filterbook, name="filter"),
     path("filter/<slug:slug>/", filterbook, name="category_filter"),
+    path("bookview/<slug:slug>/", bookview, name="bookview"),
 
 
 # Admin urls Here
