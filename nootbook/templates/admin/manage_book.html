@@ -8,7 +8,7 @@
             <div class="flex flex-1 justify-between">
                 
                 <h2 class="text-lg font-medium ">Manage Books</h2>
-                <a href="" class="text-lg font-medium text-purple-700 hover:underline">Insert Books</a>
+                <a href="{% url 'insertBook' %}" class="text-lg font-medium text-purple-700 hover:underline">Insert Books</a>
             </div>
             <table class="w-full border bg-gray-50 mt-3">
                 <thead>
@@ -16,11 +16,11 @@
                         <th class="border py-2">Id</th>
                         <th class="border py-2">Image</th>
                         <th class="border py-2">Title</th>
-                        <th class="border py-2">Description</th>
                         <th class="border py-2">Price</th>
                         <th class="border py-2">Dis_Price</th>
                         <th class="border py-2">Author</th>
                         <th class="border py-2">ISBN</th>
+                        <th class="border py-2">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,11 +30,15 @@
                     <td class="border p-2">{{book.id}}</td>
                     <td class="border p-2"><img src="{{book.cover_image.url}}" alt="" class="w-16 h-16"></td>
                     <td class="border p-2">{{book.title}}</td>
-                    <td class="border p-2">{{book.description}}</td>
                     <td class="border p-2">{{book.price}}</td>
                     <td class="border p-2">{{book.dis_price}}</td>
                     <td class="border p-2">{{book.author.name}}</td>
                     <td class="border p-2">{{book.isbn}}</td>
+                    <td class="border p-2 space-x-3">
+                        <a href="" class="text-slate-800 text-md hover:underline font-medium" >Edit</a>
+                        <a href="" class="text-red-700 text-md hover:underline font-medium" >Delete</a>
+                        <a href="" class="text-blue-700 text-md hover:underline font-medium" >Views</a>
+                    </td>
                    </tr>
                     
                    {% endfor %}

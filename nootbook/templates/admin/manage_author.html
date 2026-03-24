@@ -1,5 +1,5 @@
 {% extends 'admin/admin_base.html' %}
-
+{% load tailwind_filters %}
 {% block content %}
 
 <div class="flex flex-1 gap-5">
@@ -35,6 +35,11 @@
     </div>
     <div class="w-3/12">
         <h2  class="text-lg font-medium space-y-3 items-center text-center">Insert Author</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-900 w-full p-2 rounded-lg">Submit</button>
+        </form>
     </div>
 </div>
   

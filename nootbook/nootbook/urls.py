@@ -16,5 +16,6 @@ urlpatterns = [
     path("manage-author/", manageAuthor, name="manageAuthor"),
     path("manage-book/", manageBooks, name="manageBook"),
     path("manage-Genere/", manageGeneres, name="manageGenere"),
+    path("insert-book/", insertBook, name="insertBook"),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
