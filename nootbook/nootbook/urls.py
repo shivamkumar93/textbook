@@ -5,6 +5,7 @@ from book.views import *
 from django.conf import settings
 from django.conf.urls.static import static
 from book.admin_views import *
+from book.auth_views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -20,5 +21,10 @@ urlpatterns = [
     path("manage-book/", manageBooks, name="manageBook"),
     path("manage-Genere/", manageGeneres, name="manageGenere"),
     path("insert-book/", insertBook, name="insertBook"),
+
+# Auth Urls Here
+    path("auth-login/", authlogin, name="authlogin"),
+    path("auth-register/", register, name="authregister"),
+    path("auth-logout/", authlogout, name="authlogout"),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

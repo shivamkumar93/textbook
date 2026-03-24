@@ -3,12 +3,13 @@ from book.models import *
 from .forms import *
 from django.core.paginator import Paginator
 
+from django.contrib.admin.views.decorators import staff_member_required
 
-
-
+@staff_member_required(login_url="authlogin")
 def dashboard(request):
     return render(request, "admin/dashboard.html")
 
+@staff_member_required(login_url="authlogin")
 def manageGeneres(request):
     data = {}
     form = GenereForm(request.POST or None)
@@ -27,6 +28,7 @@ def manageGeneres(request):
             return redirect('manageGenere')
     return render(request, 'admin/manage_genere.html', data)
 
+@staff_member_required(login_url="authlogin")
 def manageAuthor(request):
     data = {}
     form = AuthorForm(request.POST or None)
@@ -46,6 +48,8 @@ def manageAuthor(request):
             return redirect('manageAuthor')
     return render(request, 'admin/manage_author.html', data)
 
+
+@staff_member_required(login_url="authlogin")
 def manageBooks(request):
     data = {}
     books = Book.objects.all()
@@ -56,6 +60,7 @@ def manageBooks(request):
     data['books'] = page_obj
     return render(request, 'admin/manage_book.html', data)
 
+@staff_member_required(login_url="authlogin")
 def insertBook(request):
     data = {}
     form = BookForm(request.POST or None, request.FILES or None)
