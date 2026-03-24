@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>bookshop</title>
+</head>
+
+<body>
+    {% include 'admin/admin_header.html' %}
+    <div class=" flex flex-1 ">
+        <div class="w-2/12  ">
+            <div class="h-[90vh] p-2 bg-slate-800 text-white border-t gap-3 w-full justify-between flex flex-col">
+                <div class="flex flex-col">
+                    <a href="" class="text-lg hover:bg-slate-900 px-5 py-2">Dashboard</a>
+                    <a href="" class="text-lg hover:bg-slate-900 px-5 py-2">Genere</a>
+                    <a href="" class="text-lg hover:bg-slate-900 px-5 py-2">Manage Books</a>
+                    <a href="" class="text-lg hover:bg-slate-900 px-5 py-2">Manage Authors</a>
+                    <a href="" class="text-lg hover:bg-slate-900 px-5 py-2">Manage Orders</a>
+                    <a href="" class="text-lg hover:bg-slate-900 px-5 py-2">Manage Users</a>
+                    <a href="" class="text-lg hover:bg-slate-900 px-5 py-2">Manage Stoke</a>
+                    <a href="" class="text-lg hover:bg-slate-900 px-5 py-2">Manage Payment</a>
+                </div>
+                <div class="flex mb-1 items-center justify-center">
+                    <a href=""
+                        class="font-semibold bg-red-600 text-white w-full py-2 hover:bg-red-800 rounded-lg px-5">Logout</a>
+                </div>
+            </div>
+        </div>
+        <div class="w-10/12  p-10">
+
+            {% block content %}
+
+            {% endblock content %}
+        </div>
+    </div>
+
+</body>
+
+</html>
