@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 
 
 
+
 def authlogin(request):
     if request.user.is_authenticated:
         return redirect('homepage')
