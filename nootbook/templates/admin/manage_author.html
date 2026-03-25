@@ -19,6 +19,7 @@
                         <th class="border py-2">Contact</th>
                         <th class="border py-2">Email</th>
                         <th class="border py-2">No of Books</th>
+                        <th class="border py-2">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,6 +31,10 @@
                         <td class="border p-2">{{author.contact}}</td>
                         <td class="border p-2">{{author.email}}</td>
                         <td class="border p-2">{{author.author.count}}</td>
+                        <td class="border p-2 space-x-3">
+                            <a href="{% url 'updateauthor' author.id %}" class="text-md font-medium text-blue-700 hover:text-blue-900 hover:underline" >Edit</a>
+                        <a href="" class="text-md font-medium text-red-700 hover:text-red-900 hover:underline">Delete</a>
+                        </td>
                     </tr>
 
                     {% endfor %}

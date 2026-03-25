@@ -17,6 +17,7 @@
                         <th class="border py-2">Id</th>
                         <th class="border py-2">Name</th>
                         <th class="border py-2">Description</th>
+                        <th class="border py-2">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,6 +27,10 @@
                     <td class="border p-2">{{genere.id}}</td>
                     <td class="border p-2">{{genere.title}}</td>
                     <td class="border p-2">{{genere.description}}</td>
+                    <td class="border p-2 space-x-3 items-center text-center">
+                        <a href="{% url 'updategenere' genere.id %}" class="text-md font-medium text-blue-700 hover:text-blue-900 hover:underline" >Edit</a>
+                        <a href="" class="text-md font-medium text-red-700 hover:text-red-900 hover:underline">Delete</a>
+                    </td>
                    </tr>
                     
                    {% endfor %}
@@ -34,7 +39,7 @@
             </table>
         </div>
     </div>
-    <div class="w-3/12">
+    <div class="w-3/12 mt-5">
         <h2  class="text-lg font-medium space-y-3 items-center text-center">Insert Genere</h2>
         <form action="" method="post">
             {% csrf_token %}

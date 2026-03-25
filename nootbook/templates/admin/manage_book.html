@@ -40,9 +40,9 @@
                     <td class="border p-2">{{book.author.name}}</td>
                     <td class="border p-2">{{book.isbn}}</td>
                     <td class="border p-2 space-x-3">
-                        <a href="" class="text-slate-800 text-md hover:underline font-medium" >Edit</a>
-                        <a href="" class="text-red-700 text-md hover:underline font-medium" >Delete</a>
-                        <a href="" class="text-blue-700 text-md hover:underline font-medium" >Views</a>
+                        <a href="{% url 'updatebook' book.id %}" class="text-slate-800 text-md hover:underline font-medium" >Edit</a>
+                        <a href="{% url 'deletebook' book.id %}" class="text-red-700 text-md hover:underline font-medium" >Delete</a>
+                        <!-- <a href="" class="text-blue-700 text-md hover:underline font-medium" >Views</a> -->
                     </td>
                    </tr>
                     

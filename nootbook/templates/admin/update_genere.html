@@ -1,0 +1,13 @@
+{% extends 'admin/admin_base.html' %}
+{% load tailwind_filters %}
+{% block content %}
+<div class="w-full">
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-900 w-full p-2 rounded-lg">Update</button>
+    </form>
+</div>
+  
+{% endblock content %}

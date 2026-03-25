@@ -21,6 +21,12 @@ urlpatterns = [
     path("manage-book/", manageBooks, name="manageBook"),
     path("manage-Genere/", manageGeneres, name="manageGenere"),
     path("insert-book/", insertBook, name="insertBook"),
+    path("update-book/<int:id>/", updateBook, name="updatebook"),
+    path("update-genere/<int:id>/", updateGenere, name="updategenere"),
+    path("update-author/<int:id>/", updateAuthor, name="updateauthor"),
+    path("delete-book/<int:id>/", deleteBook, name="deletebook"),
+    # path("update-author/<int:id>/", updateAuthor, name="updateauthor"),
+    # path("update-author/<int:id>/", updateAuthor, name="updateauthor"),
 
 # Auth Urls Here
     path("auth-login/", authlogin, name="authlogin"),

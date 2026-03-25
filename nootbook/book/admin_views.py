@@ -72,3 +72,45 @@ def insertBook(request):
             data.save()
             return redirect('manageBook')
     return render(request, 'admin/insertbook.html', data)
+
+@staff_member_required
+def updateBook(request, id):
+    books = Book.objects.get(id=id)
+    form = BookForm(request.POST or None, request.FILES or None, instance=books)
+    if form.is_valid():
+        data = form.save(commit=False)
+        data.slug = data.title.lower().replace(" ", "-")
+        data.save()
+        return redirect('manageBook')
+    return render(request, "admin/update_book.html", {'form':form})
+
+@staff_member_required
+def updateGenere(request, id):
+    generes = Genere.objects.get(id=id)
+    form = GenereForm(request.POST or None, instance=generes)
+    
+    if form.is_valid():
+        data = form.save(commit=False)
+        data.slug = data.title.lower().replace(" ", "-")
+        data.save()
+        return redirect('manageGenere')
+
+    return render(request, "admin/update_genere.html", {'form':form})
+
+@staff_member_required
+def updateAuthor(request, id):
+    authors = Author.objects.get(id=id)
+    form = AuthorForm(request.POST or None, instance=authors, )
+    
+    if form.is_valid():
+        data = form.save(commit=False)
+        data.slug = data.name.lower().replace(" ", "-")
+        data.save()
+        return redirect('manageAuthor')
+
+    return render(request, "admin/update_author.html", {'form':form})
+
+def deleteBook(request, id):
+    book = Book.objects.get(id=id)
+    book.delete()
+    return redirect('manageBook')
