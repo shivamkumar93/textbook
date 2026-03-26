@@ -19,3 +19,9 @@ class BookAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug":("title",)}
 
 admin.site.register(Book, BookAdmin)
+
+admin.site.register(Address)
+admin.site.register(Order)
+admin.site.register(OrderItem)
+admin.site.register(Coupon)
+admin.site.register(Payment)

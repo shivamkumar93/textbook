@@ -51,3 +51,6 @@ def bookview(request, slug):
         "related_books":Book.objects.filter(genere=Book.objects.get(slug=slug).genere).exclude(slug=slug)[:4]
     }
     return render(request, 'user_panel/bookview.html', data)
+
+def cart(request):
+    return render(request, "user_panel/cart.html")

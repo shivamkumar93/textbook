@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class=" px-10 py-2 ">
+    
+    <div class="bg-gray-50 p-2 mt-3 flex gap-3 rounded shadow w-full">
+        <div class="w-3/12 p-4">
+
+            <img src="" alt="{{ book.title }}" class="h-[65vh] w-full object-cover">
+        </div>
+        <div class="w-6/12 p-4 space-y-2">
+
+            <h2 class="mt-2 text-lg font-semibold">Title </h2>
+            <h2 class="text-md font-bold text-gray-600">Author : </h2>
+            <h2 class="text-lg text-gray-600">Genere : {{ book.genere }}</h2>
+            <h2 class="text-md text-gray-600">Description : {{ book.description }}</h2>
+            <h2 class="text-xl font-semibold text-gray-600">Price: ₹{{ book.dis_price }}
+                <span class=" ml-3 text-sm font-medium"><del>{{book.price}}</del></span>
+            </h2>
+            <h2 class="text-md font-medium">Edition : {{book.edition}}</h2>
+            <h2 class="text-md font-normal">ISBN : {{book.isbn}}</h2>
+            <div class="flex flex-1 gap-5 py-5">
+                <a href=""
+                    class="text-xl font-medium px-6 py-2 text-white bg-purple-700 hover:bg-purple-900 rounded-lg">Buy
+                    now</a>
+                <a href=""
+                    class="text-xl font-medium px-6 py-2 text-white bg-blue-700 hover:bg-blue-900 rounded-lg">Add
+                    to cart</a>
+            </div>
+        </div>
+        <div class="w-3/12">
+            <h1>price section </h1>
+        </div>
+    </div>
+
+ 
+
+</div>
+
+
+{% endblock content %}

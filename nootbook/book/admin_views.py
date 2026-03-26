@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from book.models import *
 from .forms import *
 from django.core.paginator import Paginator
+from django.contrib.auth.models import User
 
 from django.http import HttpResponseForbidden
 from functools import wraps
@@ -19,7 +20,14 @@ def superuser_require(view_func):
 
 @superuser_require
 def dashboard(request):
-    return render(request, "admin/dashboard.html")
+    data = {
+        "books":Book.objects.count(),
+        "generes":Genere.objects.count(),
+        "users":User.objects.count(),
+        "authors":Author.objects.count(),
+
+    }
+    return render(request, "admin/dashboard.html", data)
 
 @superuser_require
 def manageGeneres(request):

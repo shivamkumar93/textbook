@@ -6,6 +6,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from book.admin_views import *
 from book.auth_views import *
+from book.checkout_views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -13,6 +14,8 @@ urlpatterns = [
     path("filter/", filterbook, name="filter"),
     path("filter/<slug:slug>/", filterbook, name="category_filter"),
     path("bookview/<slug:slug>/", bookview, name="bookview"),
+    path("cart/", cart, name='cart'),
+
 
 
 # Admin urls Here
@@ -25,12 +28,14 @@ urlpatterns = [
     path("update-genere/<int:id>/", updateGenere, name="updategenere"),
     path("update-author/<int:id>/", updateAuthor, name="updateauthor"),
     path("delete-book/<int:id>/", deleteBook, name="deletebook"),
-    # path("update-author/<int:id>/", updateAuthor, name="updateauthor"),
-    # path("update-author/<int:id>/", updateAuthor, name="updateauthor"),
+    
 
 # Auth Urls Here
     path("auth-login/", authlogin, name="authlogin"),
     path("auth-register/", register, name="authregister"),
     path("auth-logout/", authlogout, name="authlogout"),
+
+# checkout urls here
+    path("checkout/addTocart/<slug:slug>/", addTocart, name="addTocart"),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
