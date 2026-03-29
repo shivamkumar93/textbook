@@ -8,7 +8,7 @@ def addTocart(request, slug):
     book = get_object_or_404(Book, slug=slug)
 
     if book:
-        order_queary = Order.objects.filter(user=request.user, payment_id = None)
+        order_queary = Order.objects.filter(user=request.user, payment_id = None).first()
         if order_queary.exists():
             order = order_queary[0]
             order_itme_queary = OrderItem.objects.filter(order_id=order, book_id=book)
@@ -21,10 +21,10 @@ def addTocart(request, slug):
         else:
             order = Order.objects.create(user=request.user, total_price = 0)
             OrderItem.objects.create(order_id=order, book_id=book, quantity=1)
-
+        order.save()
     else:
         return redirect("bookview", slug=slug)
-    return redirect('cart')
+    return redirect('cart', {'order':order})
 
 
 

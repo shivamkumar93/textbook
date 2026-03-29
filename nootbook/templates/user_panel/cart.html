@@ -11,22 +11,26 @@
         
             
         <div class="bg-gray-50 p-2 mt-3 flex  gap-3 rounded shadow w-full">
-            <div class="w-3/12 p-4">
+            <div class="w-4/12 p-4">
 
-                <img src="" alt="{{ item.book_id.cover_image.url }}" class="h-[40vh] w-full object-cover">
+                <img src="{{ item.book_id.cover_image.url }}" alt="" class="h-[40vh] w-full object-cover">
             </div>
-            <div class="w-6/12 p-4 ">
+            <div class="w-8/12 p-4 ">
 
                 <h2 class="mt-2 text-lg font-semibold">Title :{{item.book_id.title}} </h2>
                 <h2 class="text-md font-bold text-gray-600">Author : {{item.book_id.author}}</h2>
                 <h2 class="text-lg text-gray-600">Genere : {{ item.book_id.genere }}</h2>
                 <h2 class="text-md text-gray-600 line-clamp-2">Description : {{ item.book_id.description }}</h2>
                 <h2 class="text-xl font-semibold text-gray-600 text-green-600">Price: ₹{{ item.book_id.dis_price }}
-                    <span class=" ml-3 text-sm font-medium "><del>{{item.book_id.price}}</del></span>
+                    <span class=" ml-3 text-sm font-medium "><del>₹ {{item.book_id.price}}</del></span>
                 </h2>
                 <h2 class="text-md font-medium text-gray-600">Edition : {{item.book_id.edition}}</h2>
                 <h2 class="text-md font-normal text-gray-600">ISBN : {{item.book_id.isbn}}</h2>
-                <h2 class="text-md font-normal">Qunatity : {{item.quantity}}</h2>
+                <div class="flex flex-1 space-x-16 items-center">
+
+                    <h2 class="text-md font-normal">Qunatity : {{item.quantity}}  </h2>
+                    <h2 class="text-xl font-semibold text-green-600 ">Payable Price : ₹ {{item.get_total}}  </h2>
+                </div>
                 <div class="flex flex-1 gap-5  space-x-10 py-5">
                     
                     <a href=""
@@ -44,7 +48,7 @@
     <div class="w-3/12">
         <div class="flex flex-1 flex-start">
 
-            <h1>price section </h1>
+            <h1>{{order.get_total_price}} </h1>
         </div>
     </div>
 

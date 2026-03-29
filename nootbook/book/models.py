@@ -76,6 +76,7 @@ class Order(models.Model):
     coupon_id = models.ForeignKey(Coupon, on_delete=models.CASCADE, null=True, blank=True)
     address_is = models.ForeignKey(Address, on_delete=models.CASCADE, null=True, blank=True)
 
+
     def __str__(self):
         return f"Order {self.user.username}- {self.total_price}"
     
@@ -83,6 +84,9 @@ class OrderItem(models.Model):
     order_id = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='order_items')
     book_id = models.ForeignKey(Book, on_delete=models.CASCADE, related_name="books")
     quantity = models.IntegerField(default=1)
+
+    def get_total(self):
+        return self.book_id.dis_price * self.quantity
 
     def __str__(self):
         return f"OrderItme {self.order_id.id} - {self.book_id.title} - Quantity: {self.quantity}"
