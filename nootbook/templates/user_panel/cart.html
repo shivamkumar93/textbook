@@ -2,39 +2,52 @@
 
 {% block content %}
 
-<div class=" px-10 py-2 ">
-    
-    <div class="bg-gray-50 p-2 mt-3 flex gap-3 rounded shadow w-full">
-        <div class="w-3/12 p-4">
+<div class=" px-10 py-2 flex gap-5">
+    <div class="w-9/12 flex flex-col">
 
-            <img src="" alt="{{ book.title }}" class="h-[65vh] w-full object-cover">
-        </div>
-        <div class="w-6/12 p-4 space-y-2">
+        
+        {% for item in order_items %}
+            
+        
+            
+        <div class="bg-gray-50 p-2 mt-3 flex  gap-3 rounded shadow w-full">
+            <div class="w-3/12 p-4">
 
-            <h2 class="mt-2 text-lg font-semibold">Title </h2>
-            <h2 class="text-md font-bold text-gray-600">Author : </h2>
-            <h2 class="text-lg text-gray-600">Genere : {{ book.genere }}</h2>
-            <h2 class="text-md text-gray-600">Description : {{ book.description }}</h2>
-            <h2 class="text-xl font-semibold text-gray-600">Price: ₹{{ book.dis_price }}
-                <span class=" ml-3 text-sm font-medium"><del>{{book.price}}</del></span>
-            </h2>
-            <h2 class="text-md font-medium">Edition : {{book.edition}}</h2>
-            <h2 class="text-md font-normal">ISBN : {{book.isbn}}</h2>
-            <div class="flex flex-1 gap-5 py-5">
-                <a href=""
-                    class="text-xl font-medium px-6 py-2 text-white bg-purple-700 hover:bg-purple-900 rounded-lg">Buy
-                    now</a>
-                <a href=""
-                    class="text-xl font-medium px-6 py-2 text-white bg-blue-700 hover:bg-blue-900 rounded-lg">Add
-                    to cart</a>
+                <img src="" alt="{{ item.book_id.cover_image.url }}" class="h-[40vh] w-full object-cover">
+            </div>
+            <div class="w-6/12 p-4 ">
+
+                <h2 class="mt-2 text-lg font-semibold">Title :{{item.book_id.title}} </h2>
+                <h2 class="text-md font-bold text-gray-600">Author : {{item.book_id.author}}</h2>
+                <h2 class="text-lg text-gray-600">Genere : {{ item.book_id.genere }}</h2>
+                <h2 class="text-md text-gray-600 line-clamp-2">Description : {{ item.book_id.description }}</h2>
+                <h2 class="text-xl font-semibold text-gray-600 text-green-600">Price: ₹{{ item.book_id.dis_price }}
+                    <span class=" ml-3 text-sm font-medium "><del>{{item.book_id.price}}</del></span>
+                </h2>
+                <h2 class="text-md font-medium text-gray-600">Edition : {{item.book_id.edition}}</h2>
+                <h2 class="text-md font-normal text-gray-600">ISBN : {{item.book_id.isbn}}</h2>
+                <h2 class="text-md font-normal">Qunatity : {{item.quantity}}</h2>
+                <div class="flex flex-1 gap-5  space-x-10 py-5">
+                    
+                    <a href=""
+                        class="text-3xl font-semibold ">-</a>
+                    <a href=""
+                        class="text-3xl font-semibold ">+</a>
+                    <a href=""
+                        class="text-md font-medium px-6 py-2 text-white bg-purple-700 hover:bg-purple-900 rounded-lg">Buy
+                        now</a>
+                </div>
             </div>
         </div>
-        <div class="w-3/12">
+        {% endfor %}
+    </div>
+    <div class="w-3/12">
+        <div class="flex flex-1 flex-start">
+
             <h1>price section </h1>
         </div>
     </div>
 
- 
 
 </div>
 

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 import re
 
@@ -53,4 +53,13 @@ def bookview(request, slug):
     return render(request, 'user_panel/bookview.html', data)
 
 def cart(request):
-    return render(request, "user_panel/cart.html")
+    data = {}
+    order = Order.objects.filter(user=request.user, payment_id = None).first()
+
+    if order:
+        order_item = OrderItem.objects.filter(order_id=order)
+    else:
+        order_item = []
+    data['orders'] = order
+    data['order_items'] = order_item
+    return render(request, "user_panel/cart.html", data)
