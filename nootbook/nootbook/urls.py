@@ -37,5 +37,7 @@ urlpatterns = [
 
 # checkout urls here
     path("checkout/addTocart/<slug:slug>/", addTocart, name="addTocart"),
+    path("checkout/minusitem/<int:id>/", minusTocart, name="minusTocart"),
+    path("checkout/increaseItem/<int:id>/", increaseItem, name="increaseItem"),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

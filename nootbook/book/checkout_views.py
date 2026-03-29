@@ -5,10 +5,11 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def addTocart(request, slug):
+    generes = Genere.objects.all()
     book = get_object_or_404(Book, slug=slug)
 
     if book:
-        order_queary = Order.objects.filter(user=request.user, payment_id = None).first()
+        order_queary = Order.objects.filter(user=request.user, payment_id = None)
         if order_queary.exists():
             order = order_queary[0]
             order_itme_queary = OrderItem.objects.filter(order_id=order, book_id=book)
@@ -24,14 +25,29 @@ def addTocart(request, slug):
         order.save()
     else:
         return redirect("bookview", slug=slug)
-    return redirect('cart', {'order':order})
+    return redirect('cart')
 
 
 
 
 @login_required
-def minusTocart(request):
-    pass
+def minusTocart(request, id):
+    order_items = get_object_or_404(OrderItem, id=id)
+    if order_items.quantity > 1:
+        order_items.quantity -= 1
+        order_items.save()
+    else:
+        order_items.delete()
+    return redirect('cart')
+
+@login_required
+def increaseItem(request, id):
+    order_item = get_object_or_404(OrderItem, id=id)
+    
+    order_item.quantity += 1
+    order_item.save()
+    
+    return redirect('cart')   
 
 @login_required
 def removeFromcart(request):
